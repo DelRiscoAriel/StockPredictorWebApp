@@ -1,3 +1,4 @@
 yfinance
 prophet
 plotly
+numpy<2
