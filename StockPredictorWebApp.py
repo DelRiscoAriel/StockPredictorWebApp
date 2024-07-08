@@ -2,7 +2,7 @@
 import streamlit as st 
 from datetime import date
 import yfinance as yf
-import prophet as pt
+from prophet.forecaster import Prophet
 from prophet.plot import plot_plotly
 from plotly import graph_objs as go
 
@@ -44,7 +44,7 @@ features = ['Date', 'Close']
 df_train = data[features]
 df_train = df_train.rename(columns={"Date": "ds", "Close": "y"})
 
-model = pt.Prophet()
+model = Prophet()
 model.fit(df_train)
 future = model.make_future_dataframe(periods=period)
 predictions = model.predict(future)
